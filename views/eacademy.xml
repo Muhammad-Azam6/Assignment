@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+        <!-- Tree view-->
+        <record model="ir.ui.view" id="view_courses_tree" >
+            <field name="name">view.courses.tree</field>
+            <field name="model">eacademy.course</field>
+            <field name="arch" type="xml">
+
+                <tree string="Courses">
+                    <field name="name_seq"/>
+                    <field name="name"/>
+                    <field name="description"/>
+
+                </tree>
+
+            </field>
+            
+        </record>
+
+        <!--form view -->
+        <record model="ir.ui.view" id="course_form_view">
+            <field name="name">course.form.view</field>
+            <field name="modul">eacademy.course</field>
+            <field name="arch" type="xml">
+                <form string="Course">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name_seq"/>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                            </group>
+
+                        </group>
+                        <notebook>
+                            <page string="Information Page">
+                                <group>
+                                    <group>
+                                        <field name="description"/>
+                                    </group>
+                                </group>
+
+                            </page>
+                            <page string="Contact Information">
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                    </group>
+                                </group>
+
+                            </page>
+                            <page string="About US">
+                                <group>
+                                    <group>
+                                        <field name="description"/>
+                                    </group>
+                                </group>
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+        <!-- search view-->
+        <record model="ir.ui.view" id="course_search_view">
+            <field name="name">eacademy</field>
+            <field name="model">eacademy.course</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+
+        </record>
+
+        
+        <!-- Action view -->
+        
+        <record model="ir.actions.act_window" id="course_list_action" >
+            <field name="name">Courses</field>
+            <field name="res_model">eacadem.course</field>
+            <field name="view_type">tree,form</field>
+
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                Create the first course
+            </p>
+
+            </field>
+        </record>
+
+        <!--Menus items-->
+        <menuitem id="E_academy" name="EAcademy" wen-icon="eacademy,/static/description/icon.png"/>
+
+        <menuitem id="eacademy_menu" name="Eacademy" parent="E_academy"/>
+
+        <menuitem id="courses_menu" name="Courses" parent="eacademy_menu" action="course_list_action"/>
+
+
+</odoo>
